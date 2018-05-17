@@ -1,6 +1,6 @@
 //
 //  ComplexNumbersClass.swift
-//  Actually a struct! 😀
+//  Actually a struct, but who cares! 😜
 //  MDSComplexNumbers
 //
 //  Created by Michael Stebel on 5/17/18.
