@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		F9BA0EDA20AE1FEA00350DE9 /* MDSComplexNumbers.h in Headers */ = {isa = PBXBuildFile; fileRef = F9BA0ED820AE1FEA00350DE9 /* MDSComplexNumbers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F9BA0EE120AE204F00350DE9 /* ComplexNumbersClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BA0EE020AE204F00350DE9 /* ComplexNumbersClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F9BA0ED520AE1FEA00350DE9 /* MDSComplexNumbers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MDSComplexNumbers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9BA0ED820AE1FEA00350DE9 /* MDSComplexNumbers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDSComplexNumbers.h; sourceTree = "<group>"; };
 		F9BA0ED920AE1FEA00350DE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9BA0EE020AE204F00350DE9 /* ComplexNumbersClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexNumbersClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +50,7 @@
 			children = (
 				F9BA0ED820AE1FEA00350DE9 /* MDSComplexNumbers.h */,
 				F9BA0ED920AE1FEA00350DE9 /* Info.plist */,
+				F9BA0EE020AE204F00350DE9 /* ComplexNumbersClass.swift */,
 			);
 			path = MDSComplexNumbers;
 			sourceTree = "<group>";
@@ -95,6 +98,7 @@
 				TargetAttributes = {
 					F9BA0ED420AE1FEA00350DE9 = {
 						CreatedOnToolsVersion = 9.3.1;
+						LastSwiftMigration = 0930;
 					};
 				};
 			};
@@ -130,6 +134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9BA0EE120AE204F00350DE9 /* ComplexNumbersClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +264,7 @@
 		F9BA0EDE20AE1FEA00350DE9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -276,6 +282,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.michaelstebelconsulting.MDSComplexNumbers;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -284,6 +291,7 @@
 		F9BA0EDF20AE1FEA00350DE9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
