@@ -11,8 +11,10 @@ import Foundation
 
 
 public struct Complex: Equatable, CustomStringConvertible {
+    
     public var real: Double
     public var imaginary: Double
+    
     public init() {
         self.init(0, 0)
     }
@@ -20,6 +22,7 @@ public struct Complex: Equatable, CustomStringConvertible {
         self.real = real
         self.imaginary = imaginary
     }
+    
     public var description: String {
         let r = String(format: "%.2f", real)
         let i = String(format: "%.2f", abs(imaginary))
