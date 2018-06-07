@@ -28,8 +28,12 @@ public struct Complex: Equatable, CustomStringConvertible {
         case _ where imaginary == 0:
             result = "\(r)"
         case _ where real == 0:
-            result = "\(i)𝒊"
-        case _ where imaginary < 0:
+            result = imaginary < -1 ? "-\(i)𝒊" : "\(i)𝒊"
+        case _ where imaginary == 1:
+            result = "\(r) + 𝒊"
+        case _ where imaginary == -1:
+            result = "\(r) - 𝒊"
+        case _ where imaginary < -1:
             result = "\(r) - \(i)𝒊"
         default:
             result = "\(r) + \(i)𝒊"
