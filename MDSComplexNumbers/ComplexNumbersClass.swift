@@ -9,7 +9,6 @@
 
 import Foundation
 
-
 public struct Complex: Equatable, CustomStringConvertible {
     
     public var real: Double
@@ -18,20 +17,32 @@ public struct Complex: Equatable, CustomStringConvertible {
     public init() {
         self.init(0, 0)
     }
+    
     public init(_ real: Double, _ imaginary: Double) {
         self.real = real
         self.imaginary = imaginary
     }
     
     public var description: String {
+        
         let r = String(format: "%.2f", real)
         let i = String(format: "%.2f", abs(imaginary))
         var result = ""
+        
         switch (real, imaginary) {
         case _ where imaginary == 0:
             result = "\(r)"
         case _ where real == 0:
-            result = imaginary < -1 ? "-\(i)𝒊" : "\(i)𝒊"
+            switch imaginary {
+            case _ where imaginary < -1:
+                result = "-\(i)𝒊"
+            case 1:
+                result = "𝒊"
+            case -1:
+                result = "-𝒊"
+            default:
+                result = "\(i)𝒊"
+            }
         case _ where imaginary == 1:
             result = "\(r) + 𝒊"
         case _ where imaginary == -1:
@@ -41,6 +52,7 @@ public struct Complex: Equatable, CustomStringConvertible {
         default:
             result = "\(r) + \(i)𝒊"
         }
+        
         return result
     }
 }
