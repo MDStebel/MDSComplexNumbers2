@@ -1,42 +1,120 @@
 # MDSComplexNumbers
-## Adds complex number support with complex math functions to iOS
-To use this framework, add the MDSComplexNumbers.framework file to your Xcode project binaries. Make sure to add the line, "import MDSComplexNumbers" to each of your source code files that use the Complex number type and its methods.
+
+A lightweight Swift framework providing **complex number support** with clean syntax, stable math functions, and a Swift-friendly API. Designed for numerical work, graphics, and fractal math on iOS, iPadOS, and macOS.
+
+## Features
+
+- `Complex` type with full arithmetic support
+- Stable magnitude computation using `hypot`
+- Human-readable formatting (`2.00 - 0.50𝒊`, `𝒊`, `-𝒊`)
+- Mixed `Double` + `Complex` arithmetic
+- Immutable and consistent complex rectangles (`ComplexRect`)
+- Fully `@inlinable` for performance-critical code
+- `Sendable`, `Equatable`, and `Hashable` support
+
+---
+
+## Installation
+
+Add `MDSComplexNumbers.framework` to your Xcode project binaries, then import the module where needed:
+
+```swift
+import MDSComplexNumbers
+```
+
+---
 
 ## Functions & Examples
-### Initialize/create a New Complex Number
-var z = Complex()     // 0 + 0𝒊
 
-var w = Complex(2.5, -4.5)    // 2.5 - 4.5𝒊
+### Initialize / Create a Complex Number
 
-z = Complex(1.1, 0.9)     // 1.1 + 0.9𝒊
+```swift
+var z = Complex()                 // 0.00
+var w = Complex(2.5, -4.5)        // 2.50 - 4.50𝒊
 
-var u = Complex(0, -1)    // -𝒊
+z = Complex(1.1, 0.9)             // 1.10 + 0.90𝒊
 
-u = Complex(0, 1)     // 𝒊
+var u = Complex(0, -1)            // -𝒊
+u = Complex(0, 1)                 // 𝒊
+```
 
-### Complex Number Functions
-var sum = z + w     // 3.6 - 3.6𝒊
+---
 
-var product = z * w     // 6.8 - 2.7𝒊
+### Complex Arithmetic
 
-var squareOfComplexNumber = sqr(z)    // 0.40 + 1.98𝒊
+```swift
+let sum = z + w                   // 3.60 - 3.60𝒊
+let product = z * w               // 6.80 - 2.70𝒊
+let squared = sqr(z)              // 0.40 + 1.98𝒊
 
-print(z - w)    // "-1.40 + 5.40𝒊"
+print(z - w)                      // -1.40 + 5.40𝒊
 
-var quotient = z / w    // 1.10 + 0.90𝒊
+let quotient = z / w              // 0.05 + 0.27𝒊
 
-var areEqual = (z == w)     // false
+let areEqual = (z == w)           // false
+let notEqual = (z != w)           // true
+```
 
-var notEqual = (z != w)     // true
+---
 
-var modulusOfComplexNumber = modulus(z)     // 1.42126704035519
+### Magnitude / Modulus
 
-### Mixed Real and Complex Functions 
-#### Double is first argument
-var aDouble = Double.pi
+```swift
+let m1 = modulus(z)               // 1.42126704035519
+let m2 = z.magnitude              // same as modulus(z)
+let m3 = z.modulusSquared         // avoids sqrt
+```
 
-print(aDouble * w)      // "7.85 - 14.14𝒊"
+Magnitude uses `hypot(real, imaginary)` for improved numerical stability.
 
-print(aDouble + z)      // "4.24 + 0.90𝒊"
+---
 
-print(aDouble - w)      // "0.64 + 4.50𝒊"
+### Mixed Real and Complex Arithmetic
+
+#### `Double` as the Left Operand
+
+```swift
+let aDouble = Double.pi
+
+print(aDouble * w)                // 7.85 - 14.14𝒊
+print(aDouble + z)                // 4.24 + 0.90𝒊
+print(aDouble - w)                // 0.64 + 4.50𝒊
+```
+
+---
+
+## ComplexRect
+
+`ComplexRect` represents a rectangular region in the complex plane.  
+Corners are always normalized and internally consistent.
+
+```swift
+let r = ComplexRect(
+    Complex(-2.0, 1.0),
+    Complex(1.0, -1.0)
+)
+
+r.topLeft        // -2.00 + 1.00𝒊
+r.bottomRight    // 1.00 - 1.00𝒊
+r.bottomLeft     // -2.00 - 1.00𝒊
+r.topRight       // 1.00 + 1.00𝒊
+
+r.width          // 3.0
+r.height         // 2.0
+```
+
+An optional `MutableComplexRect` is also included if mutation is required.
+
+---
+
+## Notes
+
+- Division by `0 + 0𝒊` triggers a runtime precondition failure.
+- Formatting is intended for **debugging and display**, not serialization.
+- The API favors correctness, clarity, and performance over cleverness.
+
+---
+
+## License
+
+© Michael Stebel Consulting, LLC. All rights reserved.
