@@ -117,4 +117,4 @@ An optional `MutableComplexRect` is also included if mutation is required.
 
 ## License
 
-© Michael Stebel Consulting, LLC. All rights reserved.
+© 2018-2026 Michael Stebel Consulting, LLC. All rights reserved.
