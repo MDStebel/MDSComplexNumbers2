@@ -3,14 +3,14 @@
 //  MDSComplexNumbers
 //
 //  Created by Michael Stebel on 5/17/18.
-//  Updated: 2026-01-28
+//  Updated by Michael on 2/5/2026.
 //
 //  Notes:
 //  - Fixes description sign bug for imaginary values in (-1, 0).
 //  - Uses hypot() for stable magnitude.
 //  - Removes redundant global == (synthesized Equatable).
 //  - Makes ComplexRect consistent by deriving corners (immutable by default).
-//  - Provides optional mutable rect variant if you truly need mutation.
+//  - Provides optional mutable rect variant when mutation is required.
 //
 
 import Foundation
@@ -146,7 +146,7 @@ public extension Complex {
     }
 }
 
-// MARK: - Free functions (for compatibility with your old call sites)
+// MARK: - Free functions (for compatibility with your my old call sites)
 
 @inlinable public func abs(_ z: Complex) -> Double { z.modulus }
 @inlinable public func modulusSquared(_ z: Complex) -> Double { z.modulusSquared }
@@ -186,7 +186,7 @@ public struct ComplexRect: Equatable, Hashable, CustomStringConvertible, Sendabl
     }
 }
 
-// MARK: - Optional: Mutable rect variant (if you really need to mutate corners)
+// MARK: - Optional: Mutable rect variant (if we really need to mutate the corners)
 
 public struct MutableComplexRect: Equatable, Hashable, CustomStringConvertible, Sendable {
 
@@ -204,7 +204,7 @@ public struct MutableComplexRect: Equatable, Hashable, CustomStringConvertible, 
     }
 
     @inlinable
-    private mutating func normalize() {
+    mutating func normalize() {
         let tlr = min(topLeft.real, bottomRight.real)
         let tli = max(topLeft.imaginary, bottomRight.imaginary)
         let brr = max(topLeft.real, bottomRight.real)
